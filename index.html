@@ -154,7 +154,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-fill-color: transparent;
+      /* Removed text-fill-color for compatibility */
       filter: drop-shadow(0 2px 24px #00e67655);
       /* ACE: animated text shadow */
       animation: aceText 2.5s infinite alternate;
@@ -257,7 +257,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-fill-color: transparent;
+      /* Removed text-fill-color for compatibility */
       font-weight: bold;
       letter-spacing: 0.03em;
     }
@@ -393,14 +393,9 @@
     <a href="#disclaimer" class="nav-tab" data-target="disclaimer"><i class="bi bi-shield-exclamation"></i> Disclaimer</a>
   </nav>
   <header>
-    <h1><span>🥷</span> Noodle Spoof</h1>
+    <h1><span>🦾</span> Noodle Spoof</h1>
     <p>Free HWID Spoofer — Stylish, Fast, Undetected</p>
     <a href="#install" class="btn" id="downloadBtn">🚀 Download Now</a>
-    <div class="gh-info">
-      <a href="https://github.com/DripNoodle/noodle-spoof" target="_blank"><i class="bi bi-github"></i> View on GitHub</a>
-      <span>•</span>
-      <a href="https://dripnoodle.github.io/noodle-spoof" target="_blank"><i class="bi bi-globe"></i> GitHub Pages</a>
-    </div>
   </header>
   <div class="container">
     <section class="section" id="info">
@@ -576,12 +571,6 @@
             <b>3.</b> <b>Done!</b> All HWID traces are randomized and cleaned. Reboot for best results.
           </li>
         </ul>
-        <div style="margin-top:1.2em;">
-          <b>Safe Mode Tip:</b>
-          <div>For best spoofing, run in Windows Safe Mode.<br>
-            <a href="https://support.microsoft.com/en-us/windows/start-your-pc-in-safe-mode-in-windows-92c27cff-db89-8644-2170-3cae5e3e31ae" target="_blank" style="color:var(--accent);">How to boot Safe Mode</a>
-          </div>
-        </div>
       </div>
     </section>
     <section class="section" id="disclaimer">
@@ -688,6 +677,17 @@
         scrollToSection(hash);
       }
       highlightNav();
+    });
+
+    // Download button scrolls to install section
+    document.getElementById('downloadBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      history.replaceState(null, '', '#install');
+      scrollToSection('install');
+    });
+  </script>
+</body>
+</html>
     });
 
     // Download button scrolls to install section
