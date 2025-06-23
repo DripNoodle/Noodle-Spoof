@@ -5,7 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noodle Spoof - Info</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Use a cool icon set for subtle icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
+    :root {
+      --primary: #ff416c;
+      --accent: #00e676;
+      --bg-dark: #181828;
+      --bg-card: rgba(255,255,255,0.07);
+      --nav-bg: rgba(20,20,30,0.88);
+      --shadow: 0 2px 32px #0006;
+      --radius-lg: 26px;
+      --radius-sm: 14px;
+      --fade: rgba(255,255,255,0.13);
+      --gradient: linear-gradient(135deg, #ff416c 0%, #00e676 100%);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -16,9 +30,7 @@
       overflow-x: hidden;
       position: relative;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     /* Animated gradient background */
     body::before {
       content: "";
@@ -42,32 +54,32 @@
       z-index: -1;
       pointer-events: none;
     }
-    /* Navbar */
+    /* Navbar with tabs */
     nav {
       position: fixed;
       top: 0; left: 0; width: 100vw;
-      background: rgba(20,20,30,0.85);
-      box-shadow: 0 2px 24px #0006;
+      background: var(--nav-bg);
+      box-shadow: var(--shadow);
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 2rem;
-      padding: 1rem 0 0.5rem 0;
-      z-index: 10;
+      padding: 0.5rem 0 0.2rem 0;
+      z-index: 20;
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #222;
+      border-bottom: 1.5px solid #23234a;
       animation: fadeIn 1.2s;
       overflow-x: auto;
     }
-    nav a {
-      color: #ff7c7c;
-      font-weight: bold;
+    .nav-tab {
+      color: #fff9;
+      font-weight: 700;
       text-decoration: none;
       font-size: 1.1rem;
       letter-spacing: 0.04em;
-      transition: color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
-      padding: 0.3em 1.2em 0.6em 1.2em;
-      border-radius: 12px 12px 0 0;
+      transition: color 0.23s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+      padding: 0.3em 1.6em 0.65em 1.6em;
+      border-radius: 16px 16px 0 0;
       position: relative;
       z-index: 3;
       background: transparent;
@@ -75,13 +87,29 @@
       outline: none;
       border: none;
       cursor: pointer;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      border-bottom: 2.5px solid transparent;
     }
-    nav a.active {
+    .nav-tab.active,
+    .nav-tab:hover,
+    .nav-tab:focus-visible {
       color: #fff;
-      background: #ff416c;
-      box-shadow: 0 2px 16px #ff416c44;
+      background: linear-gradient(90deg, #ff416c 0%, #00e676 100%);
+      box-shadow: 0 2px 22px #ff416c33;
+      border-bottom: 2.5px solid #fff;
       transform: translateY(-4px) scale(1.08);
+      outline: none;
+    }
+    .tab-indicator {
+      height: 4px;
+      background: var(--gradient);
+      width: 100vw;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
     }
     header {
       background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
@@ -89,18 +117,22 @@
       padding: 7rem 2rem 4rem 2rem;
       box-shadow: 0 5px 32px rgba(0,0,0,0.5);
       animation: fadeIn 1s ease-in-out;
-      border-radius: 0 0 36px 36px;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
       position: relative;
       margin-bottom: 2rem;
     }
     header h1 {
-      font-size: 4rem;
+      font-size: 4.1rem;
       color: #fff;
       margin-bottom: 0.7rem;
       letter-spacing: 0.04em;
       text-shadow: 0 4px 32px #ff416c88;
       animation: slideInDown 1.2s ease-in-out;
       font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
     }
     header p {
       font-size: 1.5rem;
@@ -148,8 +180,9 @@
     .btn:active::after {
       transform: translate(-50%, -50%) scale(1);
     }
+    /* Tab content area */
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: 6rem auto 0 auto;
       padding: 3rem 2rem 2rem 2rem;
       display: flex;
@@ -157,13 +190,21 @@
       gap: 2.5rem;
       animation: fadeIn 2s ease-in-out;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       min-height: 420px;
+      background: none;
+    }
+    .tab-content {
+      display: none;
+      animation: fadeUp 0.8s;
+    }
+    .tab-content.active {
+      display: block;
     }
     .info-block {
-      background: rgba(255,255,255,0.07);
-      border-radius: 20px;
-      border: 1.5px solid rgba(255,255,255,0.13);
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--fade);
       padding: 2.5rem 2rem;
       box-shadow: 0 0 60px 0 #0007, 0 2px 16px #ff416c22;
       backdrop-filter: blur(14px) saturate(1.1);
@@ -171,7 +212,7 @@
       margin-bottom: 1.5rem;
     }
     .info-block h2 {
-      color: #ff7c7c;
+      color: var(--primary);
       margin-bottom: 1rem;
       font-size: 1.7rem;
       font-weight: 800;
@@ -190,15 +231,58 @@
       line-height: 1.6;
       padding-left: 0.2em;
     }
+    .demo-media {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .demo-media img, .demo-media video {
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 24px #0008;
+      max-width: 80vw;
+      max-height: 300px;
+      background: #111;
+      margin-bottom: 1em;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3rem;
+      margin-top: 1.5rem;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 16px #0005;
+      padding: 1.1rem 1.2rem;
+      border: 1.2px solid var(--fade);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: transform 0.19s;
+    }
+    .feature-card:hover {
+      transform: scale(1.04) translateY(-2px);
+      box-shadow: 0 2px 24px #00e67633;
+    }
+    .feature-icon {
+      font-size: 2.1rem;
+      color: var(--accent);
+      margin-top: 1px;
+    }
     /* Responsive tweaks */
     @media (max-width: 900px) {
       nav { gap: 1rem; }
       .container { margin-top: 4.5rem; }
+      .feature-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       nav { gap: 0.2rem; font-size: 90%; }
-      nav a { padding: 0.2em 0.7em 0.5em 0.7em; font-size: 1rem; }
+      .nav-tab { padding: 0.2em 0.7em 0.5em 0.7em; font-size: 1rem; }
       .container { margin-top: 3.5rem; }
+      header h1 { font-size: 2.2rem; }
     }
     /* Animations */
     @keyframes fadeIn {
@@ -212,64 +296,191 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* Footer */
+    footer {
+      margin-top: 5rem;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 0 1.5rem 0;
+      font-size: 1rem;
+      opacity: 0.88;
+      background: none;
+      z-index: 10;
+      position: relative;
+      letter-spacing: 0.03em;
+    }
+    /* Github Pages badge */
+    .gh-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7em;
+      margin-bottom: 0.7em;
+    }
+    .gh-info a {
+      color: #00e676;
+      font-size: 1.2em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .gh-info a:hover { color: #fff; }
   </style>
 </head>
 <body>
   <canvas id="particles"></canvas>
   <nav>
-    <a href="index.html" class="active">Info</a>
-    <a href="demo.html">Demo</a>
-    <a href="features.html">Features</a>
-    <a href="install.html">Install</a>
-    <a href="disclaimer.html">Disclaimer</a>
+    <a href="#" class="nav-tab active" data-tab="info"><i class="bi bi-info-circle"></i> Info</a>
+    <a href="#" class="nav-tab" data-tab="demo"><i class="bi bi-play-circle"></i> Demo</a>
+    <a href="#" class="nav-tab" data-tab="features"><i class="bi bi-stars"></i> Features</a>
+    <a href="#" class="nav-tab" data-tab="install"><i class="bi bi-download"></i> Install</a>
+    <a href="#" class="nav-tab" data-tab="disclaimer"><i class="bi bi-shield-exclamation"></i> Disclaimer</a>
+    <div class="tab-indicator"></div>
   </nav>
   <header>
-    <h1>🥷 Noodle Spoof</h1>
+    <h1><span>🥷</span> Noodle Spoof</h1>
     <p>Free HWID Spoofer — Stylish, Fast, Undetected</p>
-    <a href="install.html" class="btn" id="downloadBtn">🚀 Download Now</a>
+    <a href="#install" class="btn" id="downloadBtn">🚀 Download Now</a>
+    <div class="gh-info">
+      <a href="https://github.com/DripNoodle/noodle-spoof" target="_blank"><i class="bi bi-github"></i> View on GitHub</a>
+      <span>•</span>
+      <a href="https://dripnoodle.github.io/noodle-spoof" target="_blank"><i class="bi bi-globe"></i> GitHub Pages</a>
+    </div>
   </header>
   <div class="container">
-    <section class="info-block">
-      <h2>🔍 What is Noodle Spoof?</h2>
-      <p>
-        <b>Noodle Spoof</b> is a free, modern, and easy-to-use HWID spoofer for Windows. It lets you instantly change your hardware IDs (HWIDs) to bypass bans, shadowbans, and tracking on games and software. No installation, no payment, no bloat.
-      </p>
+
+    <!-- Info Tab -->
+    <section class="tab-content active" data-tab="info">
+      <div class="info-block">
+        <h2><i class="bi bi-info-circle"></i> What is Noodle Spoof?</h2>
+        <p>
+          <b>Noodle Spoof</b> is a free, modern, and easy-to-use HWID spoofer for Windows. Instantly change your hardware IDs (HWIDs) to bypass bans, shadowbans, and tracking on games and software. No install, no payment, no bloat.
+        </p>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-lightbulb"></i> Why did I make it?</h2>
+        <p>
+          Most HWID spoofers are paid, sketchy, or full of malware. I wanted a clean, open, and free solution for gamers and privacy enthusiasts who just want to play again or get a fresh start.
+        </p>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-people"></i> Who is it for?</h2>
+        <ul>
+          <li>Gamers who got banned or shadowbanned</li>
+          <li>Testers and developers needing a clean HWID</li>
+          <li>Anyone who wants to reset their PC identity</li>
+        </ul>
+      </div>
     </section>
-    <section class="info-block">
-      <h2>💡 Why did I make it?</h2>
-      <p>
-        I made Noodle Spoof because most HWID spoofers are either paid, sketchy, or full of malware. I wanted a clean, open, and free solution for gamers and privacy enthusiasts who just want to play again or get a fresh start.
-      </p>
+
+    <!-- Demo Tab -->
+    <section class="tab-content" data-tab="demo">
+      <div class="info-block">
+        <h2><i class="bi bi-play-circle"></i> Live Demo</h2>
+        <div class="demo-media">
+          <video src="demo.mp4" controls poster="demo-poster.png"></video>
+          <p>
+            <b>Watch:</b> Noodle Spoof in action! One EXE, one click, instant spoof.<br>
+            <small style="color:#aaa;">This video demonstrates the spoofer's UI and instant spoofing process. For safety, no sensitive HWIDs are shown.</small>
+          </p>
+        </div>
+      </div>
     </section>
-    <section class="info-block">
-      <h2>🛡️ What anti-cheats does it bypass?</h2>
-      <ul>
-        <li>✔ Battleye (most games)</li>
-        <li>✔ Easy Anti-Cheat (EAC)</li>
-        <li>✔ Riot Vanguard (limited, see docs)</li>
-        <li>✔ Activision/Call of Duty (tested on MW2/WZ2)</li>
-        <li>✔ Faceit (basic protection only)</li>
-        <li>✔ Apex/Fortnite/Valorant (see notes)</li>
-        <li>✔ Many more (see <a href="features.html">Features</a>)</li>
-      </ul>
-      <small style="color:#ff7c7c;">Note: No spoofer is 100% undetectable. Always use at your own risk.</small>
+
+    <!-- Features Tab -->
+    <section class="tab-content" data-tab="features">
+      <div class="info-block">
+        <h2><i class="bi bi-stars"></i> Top Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-cpu"></i></span>
+            <div>
+              <b>Randomizes Hardware IDs</b>
+              <div>BIOS, Disk, MAC, UUID, and more. </div>
+            </div>
+          </div>
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-broom"></i></span>
+            <div>
+              <b>Cleans Registry & Traces</b>
+              <div>Deletes temp files and registry traces—no leftovers.</div>
+            </div>
+          </div>
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-shield-check"></i></span>
+            <div>
+              <b>Anti-Cheat Bypass</b>
+              <div>Battleye, EAC, Vanguard (limited), Activision, Faceit, and more.</div>
+            </div>
+          </div>
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-lightning-charge"></i></span>
+            <div>
+              <b>Lightning Fast</b>
+              <div>One EXE, one click. No background processes, no drivers.</div>
+            </div>
+          </div>
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-box-arrow-in-down"></i></span>
+            <div>
+              <b>Portable & Lightweight</b>
+              <div>No installation, no bloat. Download and spoof instantly.</div>
+            </div>
+          </div>
+          <div class="feature-card"><span class="feature-icon"><i class="bi bi-github"></i></span>
+            <div>
+              <b>Open Source</b>
+              <div>Code available on GitHub. Inspect, build, or contribute!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-list-check"></i> Supported Anti-Cheats</h2>
+        <ul>
+          <li>✔ Battleye (most games)</li>
+          <li>✔ Easy Anti-Cheat (EAC)</li>
+          <li>✔ Riot Vanguard (limited, see docs)</li>
+          <li>✔ Activision/Call of Duty (tested on MW2/WZ2)</li>
+          <li>✔ Faceit (basic protection only)</li>
+          <li>✔ Apex/Fortnite/Valorant (see notes)</li>
+          <li>✔ Many more (<a href="#features">see above</a>)</li>
+        </ul>
+        <small style="color:#ff7c7c;">Note: No spoofer is 100% undetectable. Always use at your own risk.</small>
+      </div>
     </section>
-    <section class="info-block">
-      <h2>🧑‍💻 How does it work?</h2>
-      <ul>
-        <li>Randomizes BIOS, Disk, MAC, UUID, and other hardware serials</li>
-        <li>Cleans registry traces and temp files</li>
-        <li>Does not install drivers or run in the background</li>
-        <li>One EXE, one click, instant spoof</li>
-      </ul>
+
+    <!-- Install Tab -->
+    <section class="tab-content" data-tab="install">
+      <div class="info-block">
+        <h2><i class="bi bi-download"></i> Install & Usage</h2>
+        <ul>
+          <li>
+            <b>1.</b> <b>Download:</b> <a href="https://github.com/DripNoodle/noodle-spoof/releases/latest" target="_blank">Get the latest Noodle Spoof EXE</a>
+          </li>
+          <li>
+            <b>2.</b> <b>Run:</b> Double-click the EXE. You'll see a stylish UI. Click <b>"Spoof Now"</b>.
+          </li>
+          <li>
+            <b>3.</b> <b>Done!</b> All HWID traces are randomized and cleaned. Reboot for best results.
+          </li>
+        </ul>
+        <div style="margin-top:1.2em;">
+          <b>Safe Mode Tip:</b>
+          <div>For best spoofing, run in Windows Safe Mode.<br>
+            <a href="https://support.microsoft.com/en-us/windows/start-your-pc-in-safe-mode-in-windows-92c27cff-db89-8644-2170-3cae5e3e31ae" target="_blank" style="color:var(--accent);">How to boot Safe Mode</a>
+          </div>
+        </div>
+      </div>
     </section>
-    <section class="info-block">
-      <h2>🤔 Who is it for?</h2>
-      <ul>
-        <li>Gamers who got banned or shadowbanned</li>
-        <li>Testers and developers who need a clean HWID</li>
-        <li>Anyone who wants to reset their PC identity</li>
-      </ul>
+
+    <!-- Disclaimer Tab -->
+    <section class="tab-content" data-tab="disclaimer">
+      <div class="info-block">
+        <h2><i class="bi bi-shield-exclamation"></i> Disclaimer</h2>
+        <p>
+          <b>Use at your own risk!</b> Noodle Spoof is provided for educational and testing purposes only. Bypassing anti-cheats may violate game Terms of Service and can lead to bans or legal issues. The developer claims no responsibility for misuse.
+        </p>
+        <ul>
+          <li>No spoofer is 100% undetectable or future-proof.</li>
+          <li>Check your local laws and game policies before use.</li>
+          <li>Open source — review or contribute on GitHub.</li>
+        </ul>
+      </div>
     </section>
   </div>
   <footer>
@@ -317,6 +528,48 @@
       requestAnimationFrame(draw);
     }
     draw();
+
+    // Tab navigation JS
+    const tabs = document.querySelectorAll('.nav-tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    function activateTab(tabName, scrollTo = false) {
+      tabs.forEach(tab => {
+        if (tab.dataset.tab === tabName) tab.classList.add('active');
+        else tab.classList.remove('active');
+      });
+      tabContents.forEach(tc => {
+        tc.classList.toggle('active', tc.dataset.tab === tabName);
+      });
+      // If linked from anchor, scroll to content
+      if (scrollTo) {
+        setTimeout(() => {
+          document.querySelector('.container').scrollIntoView({behavior: 'smooth'});
+        }, 100);
+      }
+    }
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const tabName = tab.dataset.tab;
+        history.replaceState(null, '', '#' + tabName);
+        activateTab(tabName, true);
+      });
+    });
+    // Support hash navigation (for Github Pages)
+    function handleHash() {
+      const hash = window.location.hash.replace('#','');
+      if (hash) activateTab(hash);
+      else activateTab('info');
+    }
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
+
+    // Download button scrolls to install tab
+    document.getElementById('downloadBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      history.replaceState(null, '', '#install');
+      activateTab('install', true);
+    });
   </script>
 </body>
 </html>
