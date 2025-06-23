@@ -199,69 +199,71 @@
       margin-bottom: 1.5rem;
       width: 100%;
     }
-    .info-block h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: 0.03em;
+    .info-block .sub {
+      color: #aaa;
+      font-size: 1.05em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      display: block;
+    }
+    .info-block .highlight {
+      color: #00e676;
+      font-weight: bold;
+    }
+    .info-block code {
+      background: #23234a;
+      color: #00e676;
+      border-radius: 6px;
+      padding: 0.15em 0.5em;
+      font-size: 1em;
+      margin: 0 0.2em;
+    }
+    .info-block .qna {
+      margin-top: 1.2em;
+      padding: 1.2em 1em 0.5em 1em;
+      background: rgba(0,0,0,0.08);
+      border-radius: 12px;
+      font-size: 1.05em;
+    }
+    .info-block .qna dt {
+      font-weight: bold;
+      color: #ff7c7c;
+      margin-top: 0.7em;
+    }
+    .info-block .qna dd {
+      margin-left: 1.2em;
+      margin-bottom: 0.5em;
+      color: #eee;
+    }
+    .info-block .tips {
+      margin-top: 1.2em;
+      background: #23234a;
+      color: #ffecec;
+      border-radius: 10px;
+      padding: 1em 1.2em;
+      font-size: 1em;
+      box-shadow: 0 1px 8px #0004;
+    }
+    .info-block .anti-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2em 2.5em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    .info-block .anti-list li {
+      min-width: 220px;
+      list-style: none;
+      padding-left: 0;
+      font-size: 1.08em;
+      color: #fff;
       display: flex;
       align-items: center;
       gap: 0.5em;
     }
-    .info-block ul {
-      margin-left: 1.2em;
-      margin-bottom: 0.5em;
-    }
-    .info-block ul li {
-      margin-bottom: 0.7rem;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      padding-left: 0.2em;
-    }
-    .demo-media {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .demo-media img, .demo-media video {
-      border-radius: var(--radius-sm);
-      box-shadow: 0 2px 24px #0008;
-      max-width: 80vw;
-      max-height: 60vh;
-      background: #111;
-      margin-bottom: 1em;
-      width: 100%;
-      object-fit: cover;
-      background: #0a0a17;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.3rem;
-      margin-top: 1.5rem;
-    }
-    .feature-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-sm);
-      box-shadow: 0 1px 16px #0005;
-      padding: 1.1rem 1.2rem;
-      border: 1.2px solid var(--fade);
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: transform 0.19s;
-    }
-    .feature-card:hover {
-      transform: scale(1.04) translateY(-2px);
-      box-shadow: 0 2px 24px #00e67633;
-    }
-    .feature-icon {
-      font-size: 2.1rem;
-      color: var(--accent);
-      margin-top: 1px;
+    .info-block .anti-list li i {
+      color: #00e676;
+      font-size: 1.2em;
     }
     @media (max-width: 900px) {
       nav { gap: 1rem; }
@@ -340,12 +342,18 @@
         <p>
           <b>Noodle Spoof</b> is a free, modern, and easy-to-use HWID spoofer for Windows. Instantly change your hardware IDs (HWIDs) to bypass bans, shadowbans, and tracking on games and software. No install, no payment, no bloat.
         </p>
+        <span class="sub">HWID spoofing is the process of changing your computer's unique hardware identifiers so you can avoid hardware bans or tracking by games and software. Noodle Spoof makes this process safe, fast, and accessible to everyone.</span>
+        <div class="tips">
+          <b>✨ Why is this better?</b><br>
+          Unlike most spoofers, Noodle Spoof is <span class="highlight">open source</span>, portable, and doesn't install drivers or run in the background. You can inspect the code, build it yourself, and use it without fear of malware.
+        </div>
       </div>
       <div class="info-block">
         <h2><i class="bi bi-lightbulb"></i> Why did I make it?</h2>
         <p>
           Most HWID spoofers are paid, sketchy, or full of malware. I wanted a clean, open, and free solution for gamers and privacy enthusiasts who just want to play again or get a fresh start.
         </p>
+        <span class="sub">I was tired of seeing people get scammed or infected by "free" spoofers. Noodle Spoof is my way of giving back to the community and raising the bar for transparency and safety.</span>
       </div>
       <div class="info-block">
         <h2><i class="bi bi-people"></i> Who is it for?</h2>
@@ -354,6 +362,52 @@
           <li>Testers and developers needing a clean HWID</li>
           <li>Anyone who wants to reset their PC identity</li>
         </ul>
+        <span class="sub">If you play games like <b>Call of Duty</b>, <b>Fortnite</b>, <b>Apex Legends</b>, or use software that tracks your hardware, Noodle Spoof can help you get a fresh start.</span>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-shield-check"></i> What anti-cheats does it bypass?</h2>
+        <ul class="anti-list">
+          <li><i class="bi bi-check-circle"></i> Battleye (most games)</li>
+          <li><i class="bi bi-check-circle"></i> Easy Anti-Cheat (EAC)</li>
+          <li><i class="bi bi-check-circle"></i> Riot Vanguard <span style="color:#ffb300;">(limited)</span></li>
+          <li><i class="bi bi-check-circle"></i> Activision/Call of Duty</li>
+          <li><i class="bi bi-check-circle"></i> Faceit <span style="color:#ffb300;">(basic)</span></li>
+          <li><i class="bi bi-check-circle"></i> Apex/Fortnite/Valorant <span style="color:#ffb300;">(see notes)</span></li>
+          <li><i class="bi bi-check-circle"></i> Many more (see <a href="#features">Features</a>)</li>
+        </ul>
+        <span class="sub" style="color:#ff7c7c;">No spoofer is 100% undetectable. Always use at your own risk.</span>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-cpu"></i> How does it work?</h2>
+        <ul>
+          <li>Randomizes BIOS, Disk, MAC, UUID, and other hardware serials</li>
+          <li>Cleans registry traces and temp files</li>
+          <li>Does not install drivers or run in the background</li>
+          <li>One EXE, one click, instant spoof</li>
+        </ul>
+        <span class="sub">Noodle Spoof uses safe, reversible methods to change your hardware IDs. You can always restore your original HWID by restoring a backup or reinstalling Windows.</span>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-question-circle"></i> FAQ</h2>
+        <dl class="qna">
+          <dt>Is it really free?</dt>
+          <dd>Yes! 100% free, no ads, no nags, no upsells. Open source on <a href="https://github.com/DripNoodle/noodle-spoof" target="_blank">GitHub</a>.</dd>
+          <dt>Is it safe?</dt>
+          <dd>Yes, you can inspect the code yourself. No drivers, no background processes, no data collection.</dd>
+          <dt>Can I get banned?</dt>
+          <dd>There is always a risk. Use at your own risk and always read the disclaimer.</dd>
+          <dt>Does it work on Windows 11?</dt>
+          <dd>Yes, tested on Windows 10 and 11 (latest updates).</dd>
+          <dt>Can I restore my original HWID?</dt>
+          <dd>Yes, if you made a backup or reset Windows. Noodle Spoof does not permanently brick your hardware IDs.</dd>
+        </dl>
+      </div>
+      <div class="info-block">
+        <h2><i class="bi bi-github"></i> Open Source & Community</h2>
+        <p>
+          <b>Noodle Spoof</b> is open source and welcomes contributions, bug reports, and suggestions. Join the community on <a href="https://github.com/DripNoodle/noodle-spoof" target="_blank">GitHub</a> or <a href="https://discord.gg/yourdiscord" target="_blank">Discord</a>!
+        </p>
+        <span class="sub">If you like this project, star it on GitHub or share it with friends. Contributions and feedback are always appreciated!</span>
       </div>
     </section>
     <section class="section" id="demo">
