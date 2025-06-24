@@ -274,6 +274,9 @@
       .container { margin-top: 3.5rem; }
       header h1 { font-size: 2.2rem; }
       .section { min-height: 90vh; }
+      #requirementsGuide {
+        display: none !important;
+      }
     }
     @keyframes fadeIn {
       from { opacity: 0; } to { opacity: 1; }
@@ -320,6 +323,7 @@
     <a href="#info" class="nav-tab active" data-target="info"><i class="bi bi-info-circle"></i> Info</a>
     <a href="#demo" class="nav-tab" data-target="demo"><i class="bi bi-play-circle"></i> Demo</a>
     <a href="#features" class="nav-tab" data-target="features"><i class="bi bi-stars"></i> Features</a>
+    <a href="#requirements" class="nav-tab" data-target="requirements"><i class="bi bi-clipboard-check"></i> Requirements</a>
     <a href="#install" class="nav-tab" data-target="install"><i class="bi bi-download"></i> Install</a>
     <a href="#disclaimer" class="nav-tab" data-target="disclaimer"><i class="bi bi-shield-exclamation"></i> Disclaimer</a>
   </nav>
@@ -424,6 +428,188 @@
         <small style="color:#ff7c7c;">Note: No spoofer is 100% undetectable. Always use at your own risk.</small>
       </div>
     </section>
+    <section class="section" id="requirements">
+      <div class="info-block" style="padding:2.5rem 2rem 1.2rem 2rem;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1em;">
+          <h2 style="margin-bottom:0;display:flex;align-items:center;gap:0.5em;font-size:2rem;letter-spacing:0.02em;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:2.5em;height:2.5em;background:var(--gradient);border-radius:50%;margin-right:0.5em;box-shadow:0 2px 16px #ff416c33;">
+              <i class="bi bi-clipboard-check" style="font-size:1.5em;color:#fff;"></i>
+            </span>
+            <span>Setup Guide &amp; Requirements</span>
+          </h2>
+          <button id="toggleReqs"
+            style="background:var(--gradient);color:#fff;font-weight:700;border:none;border-radius:18px;padding:0.5em 1.3em;cursor:pointer;font-size:1.08em;box-shadow:0 2px 12px #0004;transition:background 0.2s,box-shadow 0.2s;outline:none;display:flex;align-items:center;gap:0.5em;">
+            <i class="bi bi-eye"></i> Show Guide
+          </button>
+        </div>
+        <div id="requirementsGuide"
+          style="margin-top:1.5em;display:none;font-family:'Fira Mono','Consolas',monospace;background:#181828;color:#e0e0e0;font-size:1.01rem;white-space:pre-wrap;overflow-x:auto;border-radius:14px;padding:1.5em 1.2em;box-shadow:0 2px 24px #00e67622;">
+==============================================================================
+                  🍜 NOODLE SPOOFER - SETUP GUIDE 🍜
+==============================================================================
+
+This guide will help you properly configure your system before using the
+Noodle HWID Spoofer. Following these steps is crucial to ensure the tool
+functions correctly and to avoid potential issues.
+
+If you want peace of mind, create a Restore Point before launching the spoofer.
+------------------------------------------------------------------------------
+
+==============================================================================
+                         1. SYSTEM REQUIREMENTS
+==============================================================================
+
+- Windows 10 or Windows 11
+- Administrator privileges
+- PowerShell 5.1 or higher
+
+==============================================================================
+                        2. PRE-INSTALLATION STEPS
+==============================================================================
+
+------------------------------------------------------------------------------
+a. Run as Administrator
+------------------------------------------------------------------------------
+
+Always launch the HWID Spoofer with elevated privileges.
+
+STEPS:
+1. Right-click on "Run-Noodle-Spoofer.bat"
+2. Select "Run as administrator"
+3. Click "Yes" if prompted by User Account Control
+
+------------------------------------------------------------------------------
+b. Adjust User Account Control (Optional)
+------------------------------------------------------------------------------
+
+To reduce interruptions during use:
+
+1. Press Win+R and type: UserAccountControlSettings
+2. Press Enter
+3. Drag the slider to "Never notify" (temporarily)
+4. Click OK and restart if needed
+5. ⚠️ Restore your UAC setting afterward
+
+==============================================================================
+                  3. TOOL-SPECIFIC REQUIREMENTS
+==============================================================================
+
+------------------------------------------------------------------------------
+a. VPN Spoofing Setup
+------------------------------------------------------------------------------
+
+Ensure the following:
+
+- Ports 1194 (UDP) and 443 (TCP) are not blocked
+- No other VPN software is running
+- If OpenVPN is installed:
+  - Press Win+R → appwiz.cpl → uninstall OpenVPN if found
+
+------------------------------------------------------------------------------
+b. Hardware ID Changer (Optional)
+------------------------------------------------------------------------------
+
+If you're using this module:
+
+- Close all running applications
+- Disable Driver Signature Enforcement temporarily:
+
+  1. Hold SHIFT while clicking Restart
+  2. Go to Troubleshoot > Advanced options > Startup Settings
+  3. Click Restart
+  4. Press F7 to disable enforcement
+  5. Use the tool immediately after reboot
+
+------------------------------------------------------------------------------
+c. Disk ID Changer
+------------------------------------------------------------------------------
+
+Before proceeding:
+
+- Close apps accessing your drives
+- Back up important data
+- Do not run defrag or chkdsk while spoofing
+
+------------------------------------------------------------------------------
+d. MAC Address Spoofer
+------------------------------------------------------------------------------
+
+Important notes:
+
+- Write down your original MAC
+- Have backup network access
+- Beware of MAC filtering on school/work networks
+
+==============================================================================
+               4. COMMON ISSUES & TROUBLESHOOTING
+==============================================================================
+
+Issue: "Script execution is disabled"
+Fix:
+1. Open PowerShell as Admin
+2. Run: `Set-ExecutionPolicy Bypass -Scope CurrentUser`
+3. Confirm with `Y`
+
+Issue: "Access Denied"
+Fix:
+1. Make sure you're running as Admin
+2. Right-click file → Properties → Check "Unblock" if visible
+
+Issue: Spoofing fails on new hardware
+Fix:
+1. BIOS-level protections may block changes
+2. Use registry mode instead
+
+Issue: No internet after MAC spoof
+Fix:
+1. Use the "Reset Network" option
+2. Reboot if needed
+
+Issue: Tool is detected/blocked
+Fix:
+1. Temporarily disable antivirus:
+   - For Windows Defender:
+     → Open Windows Security
+     → Virus & threat protection → Manage settings
+     → Turn OFF real-time protection
+
+   - For 3rd-party AV:
+     → Tray icon → Right-click → Disable temporarily
+
+2. Add the tool's folder to exclusions
+
+Note: Some bundled tools like Revo Uninstaller may trigger false positives.
+
+==============================================================================
+                5. POST-SPOOFING RECOMMENDATIONS
+==============================================================================
+
+- Restore UAC settings
+- Re-enable antivirus
+- Restart your PC to finalize changes
+- Verify system/network functionality
+
+==============================================================================
+                            6. DISCLAIMER
+==============================================================================
+
+Noodle Spoofer is provided for educational and privacy research purposes.
+
+By using this tool, you agree to:
+
+- Use it responsibly and lawfully
+- Accept any and all risk
+- Acknowledge the author is not liable for damages
+
+==============================================================================
+
+Thank you for using 🥷 Noodle Spoofer. If you encounter issues not covered
+in this guide, please reach out through the official channels.
+
+==============================================================================
+        </div>
+      </div>
+    </section>
     <section class="section" id="install">
       <div class="info-block">
         <h2><i class="bi bi-download"></i> Install & Usage</h2>
@@ -455,14 +641,14 @@
         <ul>
           <li>No spoofer is 100% undetectable or future-proof.</li>
           <li>Check your local laws and game policies before use.</li>
-          <li>The developer does not take responsability of any issues.</li>
+          <li>Open source — review or contribute on GitHub.</li>
         </ul>
       </div>
     </section>
   </div>
   <footer>
     &copy; 2025 Noodle Spoof. All rights unclaimed.<br>
-    Please enjoy playing again.
+    Site made with caffeine and spite.
   </footer>
   <script>
     // Particle background effect
@@ -558,6 +744,29 @@
       history.replaceState(null, '', '#install');
       scrollToSection('install');
     });
+
+    // Requirements section toggle UI (best UI)
+    const toggleReqs = document.getElementById('toggleReqs');
+    const reqGuide = document.getElementById('requirementsGuide');
+    if (toggleReqs && reqGuide) {
+      let open = false;
+      function setBtn() {
+        toggleReqs.innerHTML = open
+          ? '<i class="bi bi-eye-slash"></i> Hide Guide'
+          : '<i class="bi bi-eye"></i> Show Guide';
+      }
+      toggleReqs.addEventListener('click', function() {
+        open = !open;
+        reqGuide.style.display = open ? 'block' : 'none';
+        setBtn();
+      });
+      // Show by default on desktop, hide on mobile
+      if (window.innerWidth > 900) {
+        open = true;
+        reqGuide.style.display = 'block';
+        setBtn();
+      }
+    }
   </script>
 </body>
 </html>
